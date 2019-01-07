@@ -134,13 +134,17 @@ const scrapArticles = async () => {
       // wait to fetch the new articles
       await page.waitFor(7500)
 
-      const parsedArticles = scrapedArticles.filter((article) => {
-        return article && new Date(article.date).getFullYear() === 2018
+      const matchingArticles = scrapedArticles.filter((article) => {
+        return article && new Date(article.date).getFullYear() >= 2018
       })
 
-      if (!parsedArticles.length) {
+      if (!matchingArticles.length) {
         return articles
       }
+
+      const parsedArticles = matchingArticles.filter((article) => {
+        return new Date(article.date).getFullYear() === 2018
+      })
 
       articles = [...articles, ...parsedArticles]
 

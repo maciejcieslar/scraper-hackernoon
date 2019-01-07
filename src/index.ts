@@ -9,7 +9,7 @@ moduleAlias.addAliases({
 import { scrapArticles, Article } from './service'
 
 const sortArticlesByClaps = (articles: Article[]) => {
-  return articles.sort((fArticle, sArticle) => fArticle.claps - sArticle.claps)
+  return articles.sort((fArticle, sArticle) => sArticle.claps - fArticle.claps)
 }
 
 const createHTMLRepresentation = (articles: Article[]) => {
